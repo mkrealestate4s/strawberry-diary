@@ -1,0 +1,42 @@
+name: Sync Notion → Dashboard
+
+on:
+  schedule:
+    - cron: "0 * * * *"      # 매시간 정각 (UTC 기준, 몇 분 늦을 수 있음)
+  workflow_dispatch:          # Actions 탭에서 수동 실행
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: 노션에서 재배 기록 가져오기
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+        run: node scripts/sync.mjs
+
+      - name: 변경 있으면 data.json 커밋 (GitHub Pages가 자동 반영)
+        run: |
+          git config user.name "strawberry-bot"
+          git config user.email "strawberry-bot@users.noreply.github.com"
+          git add docs/data.json
+          if git diff --cached --quiet; then
+            echo "변경 없음"
+          else
+            git commit -m "sync: $(date -u +%Y-%m-%dT%H:%MZ)"
+            git push
+          fi

@@ -1,0 +1,40 @@
+{
+  "generatedAt": "2026-09-05T09:50:00.000Z",
+  "startDate": "2026-09-05",
+  "records": [
+    {
+      "date": "2026-09-05",
+      "title": "2026-09-05 (토) — 식재 완료·데이터 수집 시작",
+      "types": ["작업", "관찰", "환경", "관수"],
+      "planters": ["A", "B", "C", "D"],
+      "plants": ["A-1", "A-2", "B-1", "B-2", "C-1", "C-2", "D-1", "D-2"],
+      "temp": 28.6,
+      "hum": 50,
+      "water": null,
+      "fert": "없음",
+      "fertMemo": "",
+      "leaves": null,
+      "runners": null,
+      "flowers": null,
+      "fruits": null,
+      "hc": null,
+      "hg": null,
+      "brix": null,
+      "pests": ["없음"],
+      "weather": null,
+      "photos": 0,
+      "memo": "직사각 화분 4개(A~D)에 화분당 2주씩 총 8주 식재(품종 설향). 오늘부터 데이터 수집 시작. 관수: 화분 아래로 배수될 때까지 흠뻑 (급수량 미측정 — 다음 관수 때 계량컵으로 1회 측정해 기준량 확정).",
+      "created": "2026-09-05T09:20:00.000Z"
+    }
+  ],
+  "plants": [
+    { "name": "A-1", "planter": "A", "variety": "설향", "planted": "2026-09-05", "stage": "활착", "status": "양호", "location": "", "totalHarvestG": 0, "totalHarvestN": 0, "logCount": 1 },
+    { "name": "A-2", "planter": "A", "variety": "설향", "planted": "2026-09-05", "stage": "활착", "status": "양호", "location": "", "totalHarvestG": 0, "totalHarvestN": 0, "logCount": 1 },
+    { "name": "B-1", "planter": "B", "variety": "설향", "planted": "2026-09-05", "stage": "활착", "status": "양호", "location": "", "totalHarvestG": 0, "totalHarvestN": 0, "logCount": 1 },
+    { "name": "B-2", "planter": "B", "variety": "설향", "planted": "2026-09-05", "stage": "활착", "status": "양호", "location": "", "totalHarvestG": 0, "totalHarvestN": 0, "logCount": 1 },
+    { "name": "C-1", "planter": "C", "variety": "설향", "planted": "2026-09-05", "stage": "활착", "status": "양호", "location": "", "totalHarvestG": 0, "totalHarvestN": 0, "logCount": 1 },
+    { "name": "C-2", "planter": "C", "variety": "설향", "planted": "2026-09-05", "stage": "활착", "status": "양호", "location": "", "totalHarvestG": 0, "totalHarvestN": 0, "logCount": 1 },
+    { "name": "D-1", "planter": "D", "variety": "설향", "planted": "2026-09-05", "stage": "활착", "status": "양호", "location": "", "totalHarvestG": 0, "totalHarvestN": 0, "logCount": 1 },
+    { "name": "D-2", "planter": "D", "variety": "설향", "planted": "2026-09-05", "stage": "활착", "status": "양호", "location": "", "totalHarvestG": 0, "totalHarvestN": 0, "logCount": 1 }
+  ]
+}
