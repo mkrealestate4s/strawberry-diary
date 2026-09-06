@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-06T01:44:11.989Z",
+  "generatedAt": "2026-09-06T01:48:21.688Z",
   "startDate": "2026-09-05",
   "records": [
     {
@@ -149,9 +149,39 @@
           "thumb": "photos/3d365eb736e7-B1-20260906_104304-t.jpg",
           "name": "20260906_104304.jpg",
           "planter": "B"
+        },
+        {
+          "src": "photos/3d365eb736e7-B2-20260906_104307.jpg",
+          "thumb": "photos/3d365eb736e7-B2-20260906_104307-t.jpg",
+          "name": "20260906_104307.jpg",
+          "planter": "B"
+        },
+        {
+          "src": "photos/3d365eb736e7-C1-20260906_104309.jpg",
+          "thumb": "photos/3d365eb736e7-C1-20260906_104309-t.jpg",
+          "name": "20260906_104309.jpg",
+          "planter": "C"
+        },
+        {
+          "src": "photos/3d365eb736e7-C2-20260906_104311.jpg",
+          "thumb": "photos/3d365eb736e7-C2-20260906_104311-t.jpg",
+          "name": "20260906_104311.jpg",
+          "planter": "C"
+        },
+        {
+          "src": "photos/3d365eb736e7-D1-20260906_104313.jpg",
+          "thumb": "photos/3d365eb736e7-D1-20260906_104313-t.jpg",
+          "name": "20260906_104313.jpg",
+          "planter": "D"
+        },
+        {
+          "src": "photos/3d365eb736e7-D2-20260906_104315.jpg",
+          "thumb": "photos/3d365eb736e7-D2-20260906_104315-t.jpg",
+          "name": "20260906_104315.jpg",
+          "planter": "D"
         }
       ],
-      "photoCount": 3,
+      "photoCount": 8,
       "memo": "",
       "created": "2026-09-06T01:41:00.000Z"
     }
