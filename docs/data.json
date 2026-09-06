@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-06T00:32:50.190Z",
+  "generatedAt": "2026-09-06T00:39:38.165Z",
   "startDate": "2026-09-05",
   "records": [
     {
@@ -43,7 +43,57 @@
         "없음"
       ],
       "weather": null,
-      "photos": 0,
+      "photos": [
+        {
+          "src": "photos/3d265eb736e7-A1-20260905_185623.jpg",
+          "thumb": "photos/3d265eb736e7-A1-20260905_185623-t.jpg",
+          "name": "20260905_185623.jpg",
+          "planter": "A"
+        },
+        {
+          "src": "photos/3d265eb736e7-A2-20260905_185625.jpg",
+          "thumb": "photos/3d265eb736e7-A2-20260905_185625-t.jpg",
+          "name": "20260905_185625.jpg",
+          "planter": "A"
+        },
+        {
+          "src": "photos/3d265eb736e7-B1-20260905_185631.jpg",
+          "thumb": "photos/3d265eb736e7-B1-20260905_185631-t.jpg",
+          "name": "20260905_185631.jpg",
+          "planter": "B"
+        },
+        {
+          "src": "photos/3d265eb736e7-B2-20260905_185634.jpg",
+          "thumb": "photos/3d265eb736e7-B2-20260905_185634-t.jpg",
+          "name": "20260905_185634.jpg",
+          "planter": "B"
+        },
+        {
+          "src": "photos/3d265eb736e7-C1-20260905_185640.jpg",
+          "thumb": "photos/3d265eb736e7-C1-20260905_185640-t.jpg",
+          "name": "20260905_185640.jpg",
+          "planter": "C"
+        },
+        {
+          "src": "photos/3d265eb736e7-C2-20260905_185644.jpg",
+          "thumb": "photos/3d265eb736e7-C2-20260905_185644-t.jpg",
+          "name": "20260905_185644.jpg",
+          "planter": "C"
+        },
+        {
+          "src": "photos/3d265eb736e7-D1-20260905_185647.jpg",
+          "thumb": "photos/3d265eb736e7-D1-20260905_185647-t.jpg",
+          "name": "20260905_185647.jpg",
+          "planter": "D"
+        },
+        {
+          "src": "photos/3d265eb736e7-D2-20260905_185651.jpg",
+          "thumb": "photos/3d265eb736e7-D2-20260905_185651-t.jpg",
+          "name": "20260905_185651.jpg",
+          "planter": "D"
+        }
+      ],
+      "photoCount": 8,
       "memo": "직사각 화분 4개(A~D)에 화분당 2주씩 총 8주 식재(품종 설향). 오늘부터 데이터 수집 시작. 관수: 화분 아래로 배수될 때까지 흠뻑 (급수량 미측정 — 다음 관수 때 계량컵으로 1회 측정해 기준량 확정).",
       "created": "2026-09-05T09:32:00.000Z"
     }
