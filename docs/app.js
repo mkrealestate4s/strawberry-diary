@@ -118,7 +118,9 @@ function planterStats(records) {
 }
 
 // ── 렌더 ────────────────────────────────────────────────────────
-const state = { data: null, range: "30", charts: {} };
+const state = { data: null, range: "30", charts: {}, album: "all" };
+const photosOf = (r) => Array.isArray(r.photos) ? r.photos : [];
+const photoCount = (r) => Array.isArray(r.photos) ? r.photos.length : (Number(r.photos) || 0);
 const $ = (id) => document.getElementById(id);
 const show = (id, on) => $(id).classList.toggle("hidden", !on);
 
@@ -263,6 +265,36 @@ function render() {
     options: Object.assign(baseOptions({ x: yScale({ beginAtZero: true, ticks: { precision: 0, color: C.ink3, font: { weight: 700, size: 11 } } }), y: { grid: { display: false }, border: { display: false }, ticks: { color: C.ink, font: { weight: 700, size: 13 } } } }), { indexAxis: "y" }),
   });
 
+  // 사진 앨범 (기간과 무관하게 전체 기록)
+  // 사진의 화분: 「사진 A~D」에 넣은 건 그 화분, 「사진」에 넣은 건 기록의 「화분」이 하나일 때만 그 화분
+  const planterOfPhoto = (p, r) => (p.planter ? [p.planter] : ((r.planters || []).length === 1 ? r.planters : (r.planters || [])));
+  const allPhotos = all.flatMap((r) => photosOf(r).map((p) => ({ ...p, date: r.date, planters: planterOfPhoto(p, r), summary: (r.title || "").split("—").slice(1).join("—").trim() })));
+  const albumPhotos = state.album === "all" ? allPhotos : allPhotos.filter((p) => p.planters.length === 1 && p.planters[0] === state.album);
+  const albumHas = allPhotos.length > 0;
+  show("album-empty", !albumHas);
+  $("album-meta").textContent = albumHas ? `${allPhotos.length}장` : "";
+  $("album-filter").innerHTML = albumHas ? ["all", "A", "B", "C", "D"].map((k) => `<button type="button" class="sd-pill sd-pill-btn" data-album="${k}" aria-pressed="${state.album === k}">${k === "all" ? "전체" : `${k} 화분`}</button>`).join("") : "";
+  $("album-filter").querySelectorAll("button").forEach((b) => b.addEventListener("click", () => { state.album = b.dataset.album; render(); }));
+  const byDate = new Map();
+  for (const p of [...albumPhotos].sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0))) { if (!byDate.has(p.date)) byDate.set(p.date, []); byDate.get(p.date).push(p); }
+  const imgTag = (p, cls) => `<img class="${cls}" src="${esc(p.thumb || p.src)}" alt="" loading="lazy" data-full="${esc(p.src)}" data-cap="${esc(`${short(p.date)} · ${p.planters.join(" ") || "전체"}${p.summary ? " · " + p.summary : ""}`)}">`;
+  $("album").innerHTML = albumHas
+    ? ([...byDate.entries()].map(([date, ps]) => `<div class="sd-album-date">${short(date)}<small>${ps.length}장 · ${[...new Set(ps.flatMap((p) => p.planters))].join(" ") || "전체"}</small></div><div class="sd-album-row">${ps.map((p) => imgTag(p, "sd-thumb")).join("")}</div>`).join("")
+      || `<div class="sd-empty">${state.album} 화분만 고른 기록의 사진이 아직 없어요. 기록에서 「화분」을 하나만 선택하면 여기로 모여요.</div>`)
+    : "";
+  // 성장 비교: 선택한 화분(또는 전체)의 가장 오래된 사진 vs 가장 최근 사진
+  const cmpPool = [...albumPhotos].sort((a, b) => (a.date < b.date ? -1 : a.date > b.date ? 1 : 0));
+  if (cmpPool.length && cmpPool[0].date !== cmpPool[cmpPool.length - 1].date) {
+    const a = cmpPool[0], b = cmpPool[cmpPool.length - 1];
+    const gap = Math.round((parseDate(b.date) - parseDate(a.date)) / 86400000);
+    $("compare").innerHTML = `<div class="sd-compare"><figure>${imgTag(a, "")}<figcaption>${short(a.date)} 처음</figcaption></figure><div class="arrow">→</div><figure>${imgTag(b, "")}<figcaption>${short(b.date)} 최근</figcaption></figure><div class="sd-compare-note">${gap}일 동안 이만큼 자랐어요 🌱</div></div>`;
+  } else if (cmpPool.length) {
+    $("compare").innerHTML = `<div class="sd-compare"><figure>${imgTag(cmpPool[cmpPool.length - 1], "")}<figcaption>${short(cmpPool[cmpPool.length - 1].date)} 기준 사진</figcaption></figure><div class="arrow">→</div><figure><div style="aspect-ratio:1;border:2px dashed var(--line);border-radius:14px;display:flex;align-items:center;justify-content:center;color:var(--ink3);font-size:12px;padding:8px;text-align:center">다음 사진부터<br>비교가 시작돼요</div><figcaption>&nbsp;</figcaption></figure></div>`;
+  } else {
+    $("compare").innerHTML = "";
+  }
+  document.querySelectorAll("#album img, #compare img, .sd-minithumbs img").forEach((im) => im.addEventListener("click", () => openLightbox(im.dataset.full, im.dataset.cap)));
+
   // 개체 현황
   const plants = data.plants || [];
   $("plants-meta").textContent = plants.length ? `${plants.length}주` : "";
@@ -282,7 +314,7 @@ function render() {
     const env = [
       r.temp !== null && r.temp !== undefined && `${r.temp}℃`, r.hum !== null && r.hum !== undefined && `${r.hum}%`,
       r.water !== null && r.water !== undefined && `${r.water} ml`, r.hg !== null && r.hg !== undefined && `${r.hg} g`,
-      r.brix !== null && r.brix !== undefined && `${r.brix} Brix`, r.photos ? `📷 ${r.photos}` : null,
+      r.brix !== null && r.brix !== undefined && `${r.brix} Brix`, photoCount(r) ? `📷 ${photoCount(r)}` : null,
     ].filter(Boolean).join(" · ");
     const pests = (r.pests || []).filter((p) => p !== "없음");
     const planters = r.planters || [];
@@ -292,13 +324,22 @@ function render() {
         ${planters.length > 0 && planters.length < 4 ? `<span class="sd-chip plant">${esc(planters.join(" "))}</span>` : ""}
         ${pests.map((p) => `<span class="sd-chip warn">${esc(p)}</span>`).join("")}</div>
       <div class="sd-item-env">${env || "환경 수치는 없어요"}</div>
+      ${photosOf(r).length ? `<div class="sd-minithumbs">${photosOf(r).slice(0, 5).map((p) => `<img src="${esc(p.thumb || p.src)}" alt="" loading="lazy" data-full="${esc(p.src)}" data-cap="${esc(`${short(r.date)} · ${(r.planters || []).join(" ")}${summary ? " · " + summary : ""}`)}">`).join("")}</div>` : ""}
     </div></li>`;
   }).join("");
 
   $("foot").textContent = `기록은 노션에, 구경은 여기서 🍓 · 노션 「재배 기록」에서 매시간 자동 동기화${data.generatedAt ? ` · 마지막 ${kst(data.generatedAt, true)}` : ""}`;
 }
 
+function openLightbox(src, cap) {
+  const lb = $("lightbox"); if (!lb) return;
+  lb.querySelector("img").src = src; lb.querySelector(".sd-lb-cap").textContent = cap || "";
+  lb.classList.remove("hidden"); document.body.style.overflow = "hidden";
+}
+function closeLightbox() { const lb = $("lightbox"); if (!lb) return; lb.classList.add("hidden"); lb.querySelector("img").src = ""; document.body.style.overflow = ""; }
+
 async function init() {
+  const lb = $("lightbox"); if (lb) { lb.addEventListener("click", closeLightbox); document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeLightbox(); }); }
   try {
     const res = await fetch(`./data.json?t=${Date.now()}`, { cache: "no-store" });
     if (!res.ok) throw new Error(`data.json ${res.status}`);

@@ -84,6 +84,24 @@ h1{font-family:var(--display);font-weight:400;font-size:26px;letter-spacing:-0.0
 .sd-plant-name{font-family:var(--display);font-size:18px;display:flex;align-items:center;gap:8px}
 .sd-plant-name i{display:inline-block;width:10px;height:10px;border-radius:50%}
 .sd-plant-meta{font-size:12px;color:var(--ink2);margin-top:2px}
+.sd-album-date{font-family:var(--display);font-size:14px;color:var(--berry-deep);margin-top:8px;display:flex;gap:8px;align-items:baseline}
+.sd-album-date small{font-family:var(--sans);font-size:12px;color:var(--ink3);font-weight:700}
+.sd-album-row{display:flex;gap:8px;overflow-x:auto;padding:6px 2px 10px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+.sd-thumb{width:112px;height:112px;object-fit:cover;border-radius:14px;border:2px solid var(--line);flex:none;box-shadow:3px 3px 0 var(--shadow);background:var(--track);cursor:pointer;scroll-snap-align:start}
+.sd-thumb:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--shadow)}
+.sd-compare{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center;margin:6px 0 10px;padding:10px;border:2px dashed var(--line);border-radius:18px;background:#FFF8F9}
+.sd-compare figure{margin:0;text-align:center}
+.sd-compare img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:14px;border:2px solid var(--line);cursor:pointer;background:var(--track)}
+.sd-compare figcaption{font-family:var(--display);font-size:13px;color:var(--ink2);margin-top:4px}
+.sd-compare .arrow{font-family:var(--display);color:var(--berry);font-size:22px}
+.sd-compare-note{grid-column:1/-1;font-size:12px;color:var(--ink3);text-align:center}
+.sd-minithumbs{display:flex;gap:4px;margin-top:6px}
+.sd-minithumbs img{width:44px;height:44px;object-fit:cover;border-radius:8px;border:2px solid var(--line);cursor:pointer;background:var(--track)}
+.sd-pill-btn{font:inherit;cursor:pointer}
+.sd-pill[aria-pressed="true"]{background:var(--berry);border-color:var(--berry);color:#fff}
+.sd-lightbox{position:fixed;inset:0;background:rgba(74,42,46,.86);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:16px;z-index:50;cursor:zoom-out}
+.sd-lightbox img{max-width:100%;max-height:78vh;border-radius:18px;border:3px solid #fff;box-shadow:6px 6px 0 rgba(0,0,0,.25)}
+.sd-lb-cap{color:#fff;font-weight:700;font-size:14px;text-align:center;font-family:var(--display)}
 .sd-foot{margin-top:20px;font-size:12px;color:var(--ink3);text-align:center}
 .sd-error{padding:12px 14px;border:2px solid var(--berry);border-radius:16px;background:var(--berry-soft);margin-top:14px;font-size:14px;color:var(--berry-deep);font-weight:700}
 @media (prefers-reduced-motion:no-preference){
@@ -149,6 +167,14 @@ h1{font-family:var(--display);font-weight:400;font-size:26px;letter-spacing:-0.0
   </section>
 
   <section class="sd-card">
+    <div class="sd-card-head"><h2>📷 사진 앨범</h2><span class="sd-meta" id="album-meta"></span></div>
+    <div class="sd-pills" id="album-filter"></div>
+    <div id="compare"></div>
+    <div id="album"></div>
+    <div class="sd-empty hidden" id="album-empty">노션 기록의 「사진」에 화분 사진을 넣으면 여기 앨범이 생겨요. 같은 자리·같은 각도로 찍고 기록의 「화분」을 하나만 고르면 화분별 성장 비교가 딱 맞아요.</div>
+  </section>
+
+  <section class="sd-card">
     <div class="sd-card-head"><h2>🌿 개체 현황</h2><span class="sd-meta" id="plants-meta"></span></div>
     <div class="sd-plants" id="plants"></div>
   </section>
@@ -161,6 +187,7 @@ h1{font-family:var(--display);font-weight:400;font-size:26px;letter-spacing:-0.0
 
   <footer class="sd-foot" id="foot">노션 「재배 기록」에서 매시간 자동 동기화</footer>
 </main>
+<div id="lightbox" class="sd-lightbox hidden" role="dialog" aria-modal="true" aria-label="사진 크게 보기"><img alt=""><div class="sd-lb-cap"></div></div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.js"></script>
 <script src="app.js"></script>
