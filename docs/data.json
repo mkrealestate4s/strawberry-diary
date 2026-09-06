@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-06T00:58:08.901Z",
+  "generatedAt": "2026-09-06T01:44:11.989Z",
   "startDate": "2026-09-05",
   "records": [
     {
@@ -42,7 +42,7 @@
       "pests": [
         "없음"
       ],
-      "weather": null,
+      "weather": "맑음",
       "photos": [
         {
           "src": "photos/3d265eb736e7-A1-20260905_185623.jpg",
@@ -96,6 +96,64 @@
       "photoCount": 8,
       "memo": "직사각 화분 4개(A~D)에 화분당 2주씩 총 8주 식재(품종 설향). 오늘부터 데이터 수집 시작. 관수: 화분 아래로 배수될 때까지 흠뻑 (급수량 미측정 — 다음 관수 때 계량컵으로 1회 측정해 기준량 확정).",
       "created": "2026-09-05T09:32:00.000Z"
+    },
+    {
+      "date": "2026-09-06",
+      "title": "2026-09-06 (일) - 식재 후 1일차",
+      "types": [],
+      "planters": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "plants": [
+        "A-1",
+        "A-2",
+        "B-1",
+        "B-2",
+        "C-1",
+        "C-2",
+        "D-1",
+        "D-2"
+      ],
+      "temp": 29.9,
+      "hum": 56,
+      "water": null,
+      "fert": null,
+      "fertMemo": "",
+      "leaves": null,
+      "runners": null,
+      "flowers": null,
+      "fruits": null,
+      "hc": null,
+      "hg": null,
+      "brix": null,
+      "pests": [],
+      "weather": "맑음",
+      "photos": [
+        {
+          "src": "photos/3d365eb736e7-A1-20260906_104258.jpg",
+          "thumb": "photos/3d365eb736e7-A1-20260906_104258-t.jpg",
+          "name": "20260906_104258.jpg",
+          "planter": "A"
+        },
+        {
+          "src": "photos/3d365eb736e7-A2-20260906_104300.jpg",
+          "thumb": "photos/3d365eb736e7-A2-20260906_104300-t.jpg",
+          "name": "20260906_104300.jpg",
+          "planter": "A"
+        },
+        {
+          "src": "photos/3d365eb736e7-B1-20260906_104304.jpg",
+          "thumb": "photos/3d365eb736e7-B1-20260906_104304-t.jpg",
+          "name": "20260906_104304.jpg",
+          "planter": "B"
+        }
+      ],
+      "photoCount": 3,
+      "memo": "",
+      "created": "2026-09-06T01:41:00.000Z"
     }
   ],
   "plants": [
@@ -109,7 +167,7 @@
       "location": "",
       "totalHarvestG": 0,
       "totalHarvestN": 0,
-      "logCount": 1
+      "logCount": 2
     },
     {
       "name": "A-2",
@@ -121,7 +179,7 @@
       "location": "",
       "totalHarvestG": 0,
       "totalHarvestN": 0,
-      "logCount": 1
+      "logCount": 2
     },
     {
       "name": "B-1",
@@ -133,7 +191,7 @@
       "location": "",
       "totalHarvestG": 0,
       "totalHarvestN": 0,
-      "logCount": 1
+      "logCount": 2
     },
     {
       "name": "B-2",
@@ -145,7 +203,7 @@
       "location": "",
       "totalHarvestG": 0,
       "totalHarvestN": 0,
-      "logCount": 1
+      "logCount": 2
     },
     {
       "name": "C-1",
@@ -157,7 +215,7 @@
       "location": "",
       "totalHarvestG": 0,
       "totalHarvestN": 0,
-      "logCount": 1
+      "logCount": 2
     },
     {
       "name": "C-2",
@@ -169,7 +227,7 @@
       "location": "",
       "totalHarvestG": 0,
       "totalHarvestN": 0,
-      "logCount": 1
+      "logCount": 2
     },
     {
       "name": "D-1",
@@ -181,7 +239,7 @@
       "location": "",
       "totalHarvestG": 0,
       "totalHarvestN": 0,
-      "logCount": 1
+      "logCount": 2
     },
     {
       "name": "D-2",
@@ -193,7 +251,7 @@
       "location": "",
       "totalHarvestG": 0,
       "totalHarvestN": 0,
-      "logCount": 1
+      "logCount": 2
     }
   ]
 }
