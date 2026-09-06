@@ -24,6 +24,14 @@ jobs:
         with:
           node-version: 20
 
+      - name: ImageMagick 확인 (사진 리사이즈용, 없으면 설치)
+        run: |
+          if command -v convert >/dev/null 2>&1 || command -v magick >/dev/null 2>&1; then
+            echo "ImageMagick 있음: $(convert -version 2>/dev/null | head -1 || magick -version | head -1)"
+          else
+            sudo apt-get update -qq && sudo apt-get install -y -qq imagemagick
+          fi
+
       - name: 노션에서 재배 기록 가져오기
         env:
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
