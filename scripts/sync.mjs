@@ -1,6 +1,6 @@
 // 노션 「재배 기록」·「개체 관리」 → docs/data.json
 // Node 20+ (내장 fetch). 의존성 없음. 환경변수 NOTION_TOKEN 필요.
-import { writeFileSync, existsSync, mkdirSync, copyFileSync, unlinkSync } from "node:fs";
+import { writeFileSync, existsSync, mkdirSync, copyFileSync, unlinkSync, renameSync, statSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { execFileSync } from "node:child_process";
 
@@ -68,16 +68,33 @@ let IM = null; // "convert" | "magick" | false
 function imageTool() {
   if (IM !== null) return IM;
   for (const cmd of ["convert", "magick"]) {
-    try { execFileSync(cmd, ["-version"], { stdio: "ignore" }); IM = cmd; return IM; } catch { /* 다음 */ }
+    try { execFileSync(cmd, ["-version"], { stdio: "ignore" }); IM = cmd; console.log(`이미지 도구: ${cmd}`); return IM; } catch { /* 다음 */ }
   }
-  IM = false; console.warn("ImageMagick 없음 → 사진을 원본 크기로 보관합니다");
+  IM = false; console.warn("ImageMagick 없음 → 사진을 원본 크기로 보관합니다 (워크플로의 설치 단계를 확인하세요)");
   return IM;
 }
 function resize(src, dst, geometry, quality) {
   const tool = imageTool();
   if (!tool) return false;
-  try { execFileSync(tool, [src, "-auto-orient", "-resize", geometry, "-strip", "-quality", String(quality), dst], { stdio: "ignore" }); return existsSync(dst); }
-  catch { return false; }
+  try {
+    execFileSync(tool, [src, "-auto-orient", "-resize", geometry, "-strip", "-quality", String(quality), dst], { stdio: ["ignore", "ignore", "pipe"] });
+    return existsSync(dst);
+  } catch (e) {
+    console.warn(`리사이즈 실패 (${dst.split("/").pop()}): ${(e.stderr ? e.stderr.toString() : e.message).trim().slice(0, 200)}`);
+    return false;
+  }
+}
+// 이전 실행에서 도구가 없어 원본 그대로 저장된 파일(약 900KB 이상)을 발견하면 제자리에서 다시 줄인다.
+const HEAL_THRESHOLD = 900 * 1024;
+function healIfOversized(fullPath, thumbPath) {
+  if (!imageTool() || !existsSync(fullPath)) return false;
+  if (statSync(fullPath).size < HEAL_THRESHOLD) return false;
+  const tmp = fullPath + ".new";
+  if (!resize(fullPath, tmp, PHOTO_MAX, 82)) return false;
+  renameSync(tmp, fullPath);
+  const tmpT = thumbPath + ".new";
+  if (resize(fullPath, tmpT, THUMB_MAX, 78)) renameSync(tmpT, thumbPath); else copyFileSync(fullPath, thumbPath);
+  return true;
 }
 const slug = (s) => String(s || "photo").replace(/\.[^.]+$/, "").replace(/[^0-9A-Za-z가-힣_-]+/g, "").slice(0, 24) || "photo";
 
@@ -86,7 +103,7 @@ const PHOTO_PROPS = [["사진", null], ["사진 A", "A"], ["사진 B", "B"], ["�
 
 export async function collectPhotos(logPages) {
   const map = {};
-  let downloaded = 0;
+  let downloaded = 0, healed = 0;
   for (const pg of logPages) {
     const list = [];
     for (const [prop, planter] of PHOTO_PROPS) {
@@ -99,7 +116,9 @@ export async function collectPhotos(logPages) {
         const base = `${pg.id.replace(/-/g, "").slice(0, 12)}-${planter || "x"}${i + 1}-${slug(f.name)}`;
         const full = `${base}.jpg`, thumb = `${base}-t.jpg`;
         const fullPath = PHOTO_DIR + full, thumbPath = PHOTO_DIR + thumb;
-        if (!existsSync(fullPath) || !existsSync(thumbPath)) {
+        if (existsSync(fullPath) && existsSync(thumbPath)) {
+          if (healIfOversized(fullPath, thumbPath)) healed++;
+        } else {
           mkdirSync(PHOTO_DIR, { recursive: true });
           try {
             const res = await fetch(url);
@@ -123,6 +142,7 @@ export async function collectPhotos(logPages) {
     if (list.length) map[pg.id] = list;
   }
   if (downloaded) console.log(`사진 ${downloaded}장 새로 저장`);
+  if (healed) console.log(`사진 ${healed}장 다시 압축 (이전에 원본 크기로 저장된 것)`);
   return map;
 }
 
