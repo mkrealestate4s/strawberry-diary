@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-12T00:04:22.516Z",
+  "generatedAt": "2026-09-12T05:35:27.339Z",
   "startDate": "2026-09-05",
   "records": [
     {
@@ -514,6 +514,89 @@
       "photoCount": 8,
       "memo": "",
       "created": "2026-09-10T11:59:00.000Z"
+    },
+    {
+      "date": "2026-09-12",
+      "title": "",
+      "types": [
+        "관찰"
+      ],
+      "planters": [
+        "B",
+        "C",
+        "D",
+        "A"
+      ],
+      "plants": [],
+      "temp": 25.2,
+      "hum": 65,
+      "water": null,
+      "fert": null,
+      "fertMemo": "",
+      "leaves": null,
+      "runners": null,
+      "flowers": null,
+      "fruits": null,
+      "hc": null,
+      "hg": null,
+      "brix": null,
+      "pests": [
+        "없음"
+      ],
+      "weather": null,
+      "photos": [
+        {
+          "src": "photos/3d965eb736e7-A1-20260912_093822.jpg",
+          "thumb": "photos/3d965eb736e7-A1-20260912_093822-t.jpg",
+          "name": "20260912_093822.jpg",
+          "planter": "A"
+        },
+        {
+          "src": "photos/3d965eb736e7-A2-20260912_093820.jpg",
+          "thumb": "photos/3d965eb736e7-A2-20260912_093820-t.jpg",
+          "name": "20260912_093820.jpg",
+          "planter": "A"
+        },
+        {
+          "src": "photos/3d965eb736e7-B1-20260912_093833.jpg",
+          "thumb": "photos/3d965eb736e7-B1-20260912_093833-t.jpg",
+          "name": "20260912_093833.jpg",
+          "planter": "B"
+        },
+        {
+          "src": "photos/3d965eb736e7-B2-20260912_093826.jpg",
+          "thumb": "photos/3d965eb736e7-B2-20260912_093826-t.jpg",
+          "name": "20260912_093826.jpg",
+          "planter": "B"
+        },
+        {
+          "src": "photos/3d965eb736e7-C1-20260912_093837.jpg",
+          "thumb": "photos/3d965eb736e7-C1-20260912_093837-t.jpg",
+          "name": "20260912_093837.jpg",
+          "planter": "C"
+        },
+        {
+          "src": "photos/3d965eb736e7-C2-20260912_093836.jpg",
+          "thumb": "photos/3d965eb736e7-C2-20260912_093836-t.jpg",
+          "name": "20260912_093836.jpg",
+          "planter": "C"
+        },
+        {
+          "src": "photos/3d965eb736e7-D1-20260912_093842.jpg",
+          "thumb": "photos/3d965eb736e7-D1-20260912_093842-t.jpg",
+          "name": "20260912_093842.jpg",
+          "planter": "D"
+        },
+        {
+          "src": "photos/3d965eb736e7-D2-20260912_093840.jpg",
+          "thumb": "photos/3d965eb736e7-D2-20260912_093840-t.jpg",
+          "name": "20260912_093840.jpg",
+          "planter": "D"
+        }
+      ],
+      "photoCount": 8,
+      "memo": "",
+      "created": "2026-09-12T00:40:00.000Z"
     }
   ],
   "plants": [
