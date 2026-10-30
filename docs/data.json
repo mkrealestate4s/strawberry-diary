@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-29T20:10:03.089Z",
+  "generatedAt": "2026-10-30T00:45:22.676Z",
   "startDate": "2026-09-05",
   "records": [
     {
@@ -961,6 +961,40 @@
       "photoCount": 0,
       "memo": "",
       "created": "2026-10-07T22:37:00.000Z"
+    },
+    {
+      "date": "2026-10-30",
+      "title": "",
+      "types": [
+        "관찰"
+      ],
+      "planters": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "plants": [],
+      "temp": 14.1,
+      "hum": 50,
+      "water": 0,
+      "fert": null,
+      "fertMemo": "",
+      "leaves": null,
+      "runners": null,
+      "flowers": null,
+      "fruits": null,
+      "hc": null,
+      "hg": null,
+      "brix": null,
+      "pests": [
+        "없음"
+      ],
+      "weather": null,
+      "photos": [],
+      "photoCount": 0,
+      "memo": "",
+      "created": "2026-10-30T00:22:00.000Z"
     }
   ],
   "plants": [
