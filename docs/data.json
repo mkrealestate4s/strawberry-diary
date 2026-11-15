@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-15T02:30:23.699Z",
+  "generatedAt": "2026-11-15T10:38:45.154Z",
   "startDate": "2026-09-05",
   "records": [
     {
@@ -995,6 +995,75 @@
       "photoCount": 0,
       "memo": "",
       "created": "2026-10-30T00:22:00.000Z"
+    },
+    {
+      "date": "2026-11-15",
+      "title": "",
+      "types": [
+        "관수"
+      ],
+      "planters": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "plants": [],
+      "temp": 19,
+      "hum": 50,
+      "water": 1000,
+      "fert": null,
+      "fertMemo": "",
+      "leaves": null,
+      "runners": null,
+      "flowers": null,
+      "fruits": null,
+      "hc": null,
+      "hg": null,
+      "brix": null,
+      "pests": [],
+      "weather": null,
+      "photos": [
+        {
+          "src": "photos/41965eb736e7-A1-20261115_141355.jpg",
+          "thumb": "photos/41965eb736e7-A1-20261115_141355-t.jpg",
+          "name": "20261115_141355.jpg",
+          "planter": "A"
+        },
+        {
+          "src": "photos/41965eb736e7-B1-20261115_141401.jpg",
+          "thumb": "photos/41965eb736e7-B1-20261115_141401-t.jpg",
+          "name": "20261115_141401.jpg",
+          "planter": "B"
+        },
+        {
+          "src": "photos/41965eb736e7-B2-20261115_141357.jpg",
+          "thumb": "photos/41965eb736e7-B2-20261115_141357-t.jpg",
+          "name": "20261115_141357.jpg",
+          "planter": "B"
+        },
+        {
+          "src": "photos/41965eb736e7-C1-20261115_141406.jpg",
+          "thumb": "photos/41965eb736e7-C1-20261115_141406-t.jpg",
+          "name": "20261115_141406.jpg",
+          "planter": "C"
+        },
+        {
+          "src": "photos/41965eb736e7-C2-20261115_141403.jpg",
+          "thumb": "photos/41965eb736e7-C2-20261115_141403-t.jpg",
+          "name": "20261115_141403.jpg",
+          "planter": "C"
+        },
+        {
+          "src": "photos/41965eb736e7-D1-20261115_141359.jpg",
+          "thumb": "photos/41965eb736e7-D1-20261115_141359-t.jpg",
+          "name": "20261115_141359.jpg",
+          "planter": "D"
+        }
+      ],
+      "photoCount": 6,
+      "memo": "",
+      "created": "2026-11-15T05:52:00.000Z"
     }
   ],
   "plants": [
