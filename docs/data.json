@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-28T10:07:34.470Z",
+  "generatedAt": "2026-11-28T18:47:01.682Z",
   "startDate": "2026-09-05",
   "records": [
     {
@@ -1064,6 +1064,31 @@
       "photoCount": 6,
       "memo": "",
       "created": "2026-11-15T05:52:00.000Z"
+    },
+    {
+      "date": "2026-11-28",
+      "title": "",
+      "types": [],
+      "planters": [],
+      "plants": [],
+      "temp": 13.1,
+      "hum": 63,
+      "water": null,
+      "fert": null,
+      "fertMemo": "",
+      "leaves": null,
+      "runners": null,
+      "flowers": null,
+      "fruits": null,
+      "hc": null,
+      "hg": null,
+      "brix": null,
+      "pests": [],
+      "weather": null,
+      "photos": [],
+      "photoCount": 0,
+      "memo": "",
+      "created": "2026-11-28T12:22:00.000Z"
     }
   ],
   "plants": [
